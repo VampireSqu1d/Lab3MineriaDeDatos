@@ -85,19 +85,19 @@ MapaPred = Test(:, 11) == PrediccionClases;
 %porcentaje de aciertos de predicciones en la matriz Test
 porcentaje = 100* (sum(MapaPred,1)/size(Test,1)); 
 
-true_positive = 0; % la prediccion es maligno 4 y el valor real es maligno 4
-true_negative = 0; % la prediccion es benigno 2 y el valor real es benigno 2
-false_positive = 0; % la prediccion es maligno 4 y el valor real es benigno 2
-false_negative = 0; % la prediccion es benigno 2 y el valor real es maligno 4
+true_positive = 0; % la prediccion es benigno(2) y el valor real es benigno(2)
+true_negative = 0; % la prediccion es benigno(2) y el valor real es maligno(4)
+false_positive = 0; % la prediccion es benigno(2) y el valor real es maligno(4)
+false_negative = 0; % la prediccion es maligno(4) y el valor real es benigno(2)
 % en este for se  cálcula la cantidad de positivos y negativos
 for renglon=1: size(Test(:, 11))
-    if Test(renglon,11) == 4 && PrediccionClases(renglon,1) == 4
+    if Test(renglon,11) == 2 && PrediccionClases(renglon,1) == 2
         true_positive = true_positive + 1;
-    elseif Test(renglon,11) == 4 && PrediccionClases(renglon,1) == 2
-        false_negative = false_negative + 1;
-    elseif Test(renglon,11) == 2 && PrediccionClases(renglon,1) == 2
-        true_negative = true_negative + 1;
     elseif Test(renglon,11) == 2 && PrediccionClases(renglon,1) == 4
+        false_negative = false_negative + 1;
+    elseif Test(renglon,11) == 4 && PrediccionClases(renglon,1) == 4
+        true_negative = true_negative + 1;
+    elseif Test(renglon,11) == 4 && PrediccionClases(renglon,1) == 2
         false_positive = false_positive + 1;
     end
 end

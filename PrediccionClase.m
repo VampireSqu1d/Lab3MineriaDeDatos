@@ -20,8 +20,10 @@ for c =1: size(s,1)
    end
    if ProbsM > ProbsB
        predicClaseM(num_reg,1) = 4;
-   else
+   elseif ProbsB > ProbsM
        predicClaseM(num_reg,1) = 2;
+   else
+       predicClaseM(num_reg,1) = 0;
    end
   num_reg = num_reg + 1;
 end
